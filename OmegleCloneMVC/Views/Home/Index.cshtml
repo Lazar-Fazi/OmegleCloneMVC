@@ -1,118 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Dobrodošli";
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="home-wrapper">
-    <div class="logo">⚡</div>
-    <h1 class="title">Strangly</h1>
-    <p class="subtitle">Talk to Strangers on the Best Omegle Alternative</p>
-
-    <input class="interest-box" placeholder="Type your interests..." disabled />
-
-    <div class="button-row">
-        <a class="main-btn" asp-controller="Chat" asp-action="Text">Text Chat</a>
-        <span class="or">OR</span>
-        <a class="main-btn" asp-controller="Chat" asp-action="Video">Video Chat</a>
+<div class="home-hero">
+    <div class="hero-content">
+        <img src="~/images/logo-strangly.png" alt="Strangly Logo" class="hero-logo" />
+        <h1>Strangly</h1>
+        <p class="subtitle">Meet New People, Instantly.</p>
+        <input id="interestInput" type="text" placeholder="Enter your interests..." />
+        <div class="hero-buttons">
+            <button onclick="startTextChat()">Text Chat</button>
+            <button onclick="startVideoChat()">Video Chat</button>
+        </div>
     </div>
-
-    <footer class="footer-links">
-        <div>
-            <a href="#">About</a>
-            <a href="#">Rules</a>
-            <a href="#">Support</a>
-        </div>
-        <div class="copyright">
-            © Lightningware 2025
-        </div>
-        <div>
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Legal</a>
-        </div>
-    </footer>
 </div>
 
-@section Styles {
-    <style>
-        body {
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            text-align: center;
+<footer class="home-footer">
+    <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/rules">Rules</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/support">Support</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 Strangly</div>
+</footer>
+
+@section Scripts {
+    <script>
+        function startTextChat() {
+            const interest = document.getElementById("interestInput").value;
+            const url = `/Chat/Text${interest ? `?interest=${encodeURIComponent(interest)}` : ''}`;
+            window.location.href = url;
         }
 
-        .home-wrapper {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        function startVideoChat() {
+            const interest = document.getElementById("interestInput").value;
+            const url = `/Chat/Video${interest ? `?interest=${encodeURIComponent(interest)}` : ''}`;
+            window.location.href = url;
         }
-
-        .logo {
-            font-size: 50px;
-            color: #facc15;
-        }
-
-        .title {
-            font-size: 42px;
-            font-weight: bold;
-            margin: 10px 0 5px;
-        }
-
-        .subtitle {
-            font-size: 16px;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .interest-box {
-            width: 320px;
-            padding: 12px;
-            border-radius: 5px;
-            border: none;
-            background-color: #111;
-            color: #aaa;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .button-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .main-btn {
-            background-color: #facc15;
-            padding: 10px 20px;
-            font-weight: bold;
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .or {
-            font-weight: bold;
-            color: #999;
-        }
-
-        .footer-links {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-around;
-            color: #666;
-        }
-
-            .footer-links a {
-                margin: 0 10px;
-                color: #666;
-                text-decoration: none;
-            }
-    </style>
+    </script>
 }
+

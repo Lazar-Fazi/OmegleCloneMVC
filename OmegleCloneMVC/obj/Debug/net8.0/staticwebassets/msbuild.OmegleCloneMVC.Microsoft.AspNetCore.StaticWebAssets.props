@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fp9z2r2cpk</Fingerprint>
-      <Integrity>48lNajkWirVrLLZy7xTwjhWs+lk+V+yeFdaDwlL01S8=</Integrity>
+      <Fingerprint>s0beq75dk7</Fingerprint>
+      <Integrity>TJXTzyRHb4AF7fS8K2ae7petsvG2FW20v2/d07YP1fw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</OriginalItemSpec>

@@ -7,6 +7,10 @@ namespace OmegleCloneMVC.Hubs
     {
         private static int OnlineCount = 0;
 
+        private static Dictionary<string, string> UserInterests = new();
+
+
+
         private static List<string> WaitingUsers = new();
         private static Dictionary<string, string> UserGenders = new();
         private static Dictionary<string, string> Pairs = new();
@@ -14,7 +18,11 @@ namespace OmegleCloneMVC.Hubs
         public override async Task OnConnectedAsync()
         {
             var gender = Context.GetHttpContext()?.Request.Query["gender"].ToString() ?? "Nepoznat";
+            var interest = Context.GetHttpContext()?.Request.Query["interest"].ToString() ?? "";
+
             UserGenders[Context.ConnectionId] = gender;
+            UserInterests[Context.ConnectionId] = interest;
+
 
             string partner = null;
             string yourGender = null;
@@ -43,6 +51,18 @@ namespace OmegleCloneMVC.Hubs
             {
                 await Clients.Client(partner).SendAsync("PartnerGender", yourGender);
                 await Clients.Client(Context.ConnectionId).SendAsync("PartnerGender", partnerGender);
+
+                var yourInterest = UserInterests[Context.ConnectionId];
+                var partnerInterest = UserInterests[partner];
+
+                if (!string.IsNullOrEmpty(yourInterest) &&
+                    !string.IsNullOrEmpty(partnerInterest) &&
+                    yourInterest.Equals(partnerInterest, StringComparison.OrdinalIgnoreCase))
+                {
+                    await Clients.Client(partner).SendAsync("CommonInterest", yourInterest);
+                    await Clients.Client(Context.ConnectionId).SendAsync("CommonInterest", yourInterest);
+                }
+
 
                 await Clients.Client(partner).SendAsync("PartnerFound");
                 await Clients.Client(Context.ConnectionId).SendAsync("PartnerFound");
@@ -83,6 +103,9 @@ namespace OmegleCloneMVC.Hubs
 
             UserGenders.Remove(Context.ConnectionId);
             await base.OnDisconnectedAsync(ex);
+
+            UserInterests.Remove(Context.ConnectionId);
+
         }
 
 

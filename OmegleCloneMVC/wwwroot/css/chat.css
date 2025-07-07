@@ -157,16 +157,19 @@ video {
         background-color: #facc15;
         color: #000;
         border: none;
-        padding: 10px 14px;
+        padding: 12px 20px;
         border-radius: 6px;
-        font-weight: 600;
+        font-weight: bold;
+        font-size: 16px;
         cursor: pointer;
         transition: background-color 0.2s ease;
     }
 
         .input-wrapper button:hover {
             background-color: #eab308;
+            color: #000;
         }
+
 
 
 button {
@@ -260,3 +263,187 @@ button {
         transform: rotate(360deg);
     }
 }
+
+
+/* CUSTOM NAVBAR */
+
+.custom-nav {
+    background-color: #111 !important;
+    border-bottom: 1px solid #111 !important;
+}
+
+
+    .custom-nav .nav-link,
+    .custom-nav .navbar-brand {
+        color: #facc15 !important;
+    }
+
+        .custom-nav .nav-link:hover,
+        .custom-nav .navbar-brand:hover {
+            color: #eab308 !important;
+        }
+
+    .custom-nav .nav-link {
+        color: #facc15 !important;
+        font-weight: 600;
+    }
+
+        .custom-nav .nav-link:hover {
+            color: #eab308 !important;
+        }
+
+
+    .custom-nav .navbar-toggler {
+        border-color: #facc15;
+    }
+
+    .custom-nav .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23facc15' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(250,204,21, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .custom-nav .navbar-collapse {
+        background-color: #111;
+    }
+
+    .custom-nav .navbar-nav.ms-auto .nav-item {
+        margin-left: 15px;
+    }
+
+
+    /* HOME*/
+
+.home-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: #000;
+    color: #facc15;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-logo {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.hero-content input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .hero-buttons button {
+        background: #facc15;
+        color: #000;
+        border: none;
+        padding: 12px 24px;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        .hero-buttons button:hover {
+            background: #eab308;
+        }
+
+.home-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 10px 20px;
+    color: #666;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #999;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+    .footer-links a:hover {
+        color: #facc15;
+    }
+
+.footer-copy {
+    margin-top: 5px;
+}
+
+
+/* Default DARK THEME */
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.light-theme body {
+    background-color: #d4d4d4;
+    color: #222;
+}
+
+.light-theme .chat-column {
+    background-color: #bcbcbc;
+    color: #222;
+}
+
+.light-theme .input-wrapper {
+    background-color: #a8a8a8;
+}
+
+    .light-theme .input-wrapper input[type="text"] {
+        background-color: #fff;
+        color: #222;
+    }
+
+.light-theme button {
+    background-color: #333;
+    color: #fff;
+}
+
+.light-theme .gender-option {
+    background-color: #a8a8a8;
+    color: #222;
+}
+
+.light-theme #chatBox {
+    background-color: #eee;
+    color: #222;
+}
+
+.light-theme .loader-container {
+    background-color: rgba(255,255,255,0.75);
+    color: #222;
+}
+

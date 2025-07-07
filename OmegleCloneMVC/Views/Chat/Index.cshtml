@@ -59,11 +59,16 @@
         let isMicMuted = false, isCameraOff = false;
         let typingTimeout;
 
+                // Izdvoji interest iz query stringa
+        const urlParams = new URLSearchParams(window.location.search);
+        const userInterest = urlParams.get("interest") || "";
+
+
         const config = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
 
         async function setupSignalR(userGender) {
             connection = new signalR.HubConnectionBuilder()
-                .withUrl("/chatHub?gender=" + encodeURIComponent(userGender))
+                .withUrl("/chatHub?gender=" + encodeURIComponent(userGender) + "&interest=" + encodeURIComponent(userInterest))
                 .build();
 
         connection.on("PartnerFound", () => {
@@ -125,6 +130,11 @@
                 document.getElementById("remoteVideo").srcObject = null;
                 if (peerConnection) peerConnection.close();
             });
+
+            connection.on("CommonInterest", (interest) => {
+                appendChat(`💡 You both like: ${interest}`);
+            });
+
 
             await connection.start();
 

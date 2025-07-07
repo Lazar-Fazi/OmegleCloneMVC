@@ -14,19 +14,183 @@
 
 </head>
 <body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark custom-nav">
+
+
+
+
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="Index">Strangly</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-flex w-100">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+						<li class="nav-item">
+                            <button id="themeToggle" class="theme-toggle-btn">🌙</button>
+						</li>
+                        <li class="nav-item" id="adminPanelNav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AdminPanel" asp-action="Index">Admin Panel</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        
+
+                        <li class="nav-item" id="loginNav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item" id="registerNav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item" id="logoutNav" style="display:none;">
+                            <a class="nav-link text-dark" href="#" onclick="logout()">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link text-dark" id="navUser"></span>
+                        </li>
+
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main class="full-screen-body">
         @RenderBody()
     </main>
 
-
-    @* <footer class="border-top footer text-muted"> *@
-    @*     <div class="container"> *@
-    @*         &copy; 2025 - OmegleCloneMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
-    @*     </div> *@
-    @* </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+
+
+    <script>
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        window.onload = function () {
+            const token = localStorage.getItem("jwt");
+            if (token) {
+                const payload = parseJwt(token);
+
+                document.getElementById("loginNav").style.display = "none";
+                document.getElementById("registerNav").style.display = "none";
+                document.getElementById("logoutNav").style.display = "block";
+
+                if (payload && (payload.Role === "Admin" || payload.Role === "admin")) {
+                    document.getElementById("adminPanelNav").style.display = "block";
+                } else {
+                    document.getElementById("adminPanelNav").style.display = "none";
+                }
+            } else {
+                document.getElementById("loginNav").style.display = "block";
+                document.getElementById("registerNav").style.display = "block";
+                document.getElementById("logoutNav").style.display = "none";
+                document.getElementById("adminPanelNav").style.display = "none";
+            }
+        };
+
+        function logout() {
+            const token = localStorage.getItem("jwt");
+            if (token) {
+                const payload = parseJwt(token);
+                const userId = payload?.UserId;
+
+                if (userId) {
+                    fetch("/api/Users/Logout", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + token
+                        },
+                        body: JSON.stringify(userId)
+                    }).then(() => {
+                        localStorage.removeItem("jwt");
+                        window.location.href = "/";
+                    });
+                } else {
+                    localStorage.removeItem("jwt");
+                    window.location.href = "/";
+                }
+            } else {
+                window.location.href = "/";
+            }
+        }
+
+    </script>
+
+    <script>
+        function parseJwt (token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
+        }
+        const token = localStorage.getItem("jwt");
+        if (token) {
+            const decoded = parseJwt(token);
+            if (decoded && decoded.User) {
+                document.addEventListener("DOMContentLoaded", function() {
+                    const nav = document.querySelector("#navUser");
+                    if (nav) {
+                        nav.textContent = `Zdravo, ${decoded.User}`;
+                    }
+                });
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("themeToggle");
+            const currentTheme = localStorage.getItem("theme") || "dark";
+
+            if (currentTheme === "light") {
+                document.documentElement.classList.add("light-theme");
+                toggleBtn.textContent = "🌙";
+            } else {
+                toggleBtn.textContent = "☀️";
+            }
+
+            toggleBtn.addEventListener("click", () => {
+                document.documentElement.classList.toggle("light-theme");
+                if (document.documentElement.classList.contains("light-theme")) {
+                    localStorage.setItem("theme", "light");
+                    toggleBtn.textContent = "🌙";
+                } else {
+                    localStorage.setItem("theme", "dark");
+                    toggleBtn.textContent = "☀️";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
