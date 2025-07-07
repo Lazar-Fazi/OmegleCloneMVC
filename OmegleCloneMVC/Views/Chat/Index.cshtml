@@ -19,13 +19,19 @@
 
 
         <!-- Pol -->
-        <div class="gender-select-wrapper">
-            <select id="genderSelect">
-                <option value="" disabled selected>Izaberi pol</option>
-                <option value="Muško">Muško</option>
-                <option value="Žensko">Žensko</option>
-            </select>
+        <div class="top-bar">
+            <span class="logo" onclick="window.location.href='/'">Strangly</span>
+            <div class="gender-select-wrapper">
+                <select id="genderSelect">
+                    <option value="">Izaberi pol</option>
+                    <option value="male">Muško</option>
+                    <option value="female">Žensko</option>
+                </select>
+            </div>
         </div>
+
+
+
 
 
         <div id="onlineUsers" class="online-counter">👥 0 online</div>
@@ -34,6 +40,12 @@
         <!-- Chat box -->
         <div id="chatBox"></div>
         <div id="typingStatus"></div>
+
+        <!-- Device Select -->
+        <div class="device-select-wrapper">
+            <label for="videoDevicesSelect">Choose Camera:</label>
+            <select id="videoDevicesSelect" class="device-select"></select>
+        </div>
 
         <!-- Input -->
         <div class="input-wrapper">
@@ -204,8 +216,15 @@
 
         function attachLocalStream() {
             document.getElementById("localVideo").srcObject = localStream;
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            // Proveri da nema duplih addTrack poziva
+            localStream.getTracks().forEach(track => {
+                if (!peerConnection.getSenders().some(sender => sender.track === track)) {
+                    peerConnection.addTrack(track, localStream);
+                }
+            });
         }
+
 
         function sendMessage() {
             const msg = document.getElementById("messageInput").value;
@@ -279,6 +298,9 @@
             document.getElementById("messageInput").focus();
         };
 
+                function goHome() {
+            window.location.href = "/";
+        }
 
 
     </script>
@@ -308,11 +330,96 @@
 
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var nav = document.getElementById("mainNavbar");
+            if (nav) {
+                nav.style.display = "none";
+            }
+        });
+    </script>
+
+
+    <script>
+
+        async function populateVideoDevices() {
+            try {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const videoSelect = document.getElementById("videoDevicesSelect");
+                if (!videoSelect) return;
+
+                videoSelect.innerHTML = "";
+
+                const videoDevices = devices.filter(d => d.kind === "videoinput");
+                videoDevices.forEach(device => {
+                    const option = document.createElement("option");
+                    option.value = device.deviceId;
+                    option.text = device.label || `Kamera ${videoSelect.length + 1}`;
+                    videoSelect.appendChild(option);
+                });
+            } catch (err) {
+                console.error("Error listing cameras:", err);
+            }
+        }
+
+        // Pozovi odmah pri učitavanju stranice
+        document.addEventListener("DOMContentLoaded", populateVideoDevices);
+
+        document.getElementById("videoDevicesSelect")?.addEventListener("change", async function (e) {
+            const deviceId = e.target.value;
+
+            try {
+                const newStream = await navigator.mediaDevices.getUserMedia({
+                    video: { deviceId: { exact: deviceId } },
+                    audio: true
+                });
+
+                // Zaustavi prethodni stream
+                if (localStream) {
+                    localStream.getTracks().forEach(track => track.stop());
+                }
+
+                localStream = newStream;
+
+                // Postavi novu kameru u localVideo preview
+                const localVideo = document.getElementById("localVideo");
+                if (localVideo) {
+                    localVideo.srcObject = localStream;
+                    localVideo.play();
+                }
+
+                // Zameni track u PeerConnection-u
+                if (peerConnection) {
+                    const videoTrack = localStream.getVideoTracks()[0];
+                    const videoSender = peerConnection.getSenders().find(s => s.track?.kind === "video");
+                    if (videoSender) {
+                        await videoSender.replaceTrack(videoTrack);
+                        console.log("✅ Track zamenjen u peerConnection.");
+                    } else {
+                        // Ako nema video sendera (prva konekcija)
+                        localStream.getTracks().forEach(track => {
+                            peerConnection.addTrack(track, localStream);
+                        });
+                    }
+                }
+
+            } catch (err) {
+                console.error("Error switching camera:", err);
+            }
+        });
+
+    </script>
 
 }
 
 @section Styles {
     <style>
+        /*
+        -------------------------------------------------
+        GLOBAL RESET / LAYOUT
+        -------------------------------------------------
+        */
+
         .container {
             max-width: 100vw;
             height: 100vh;
@@ -320,55 +427,195 @@
             background: #000;
             padding: 0;
             margin: 0;
-        }
-
-        .video-column, .chat-column {
-            width: 50%;
-            padding: 20px;
             box-sizing: border-box;
         }
 
-        video {
-            width: 100%;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            background: #222;
+        /*
+        -------------------------------------------------
+        VIDEO SECTION (LEFT SIDE)
+        -------------------------------------------------
+        */
+
+        .video-column {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #000;
+            overflow-y: auto;
         }
 
+            .video-column video {
+                width: 100%;
+                height: 45vh;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                background-color: #222;
+                border: 2px solid #333;
+                object-fit: cover;
+            }
+
+        /*
+        -------------------------------------------------
+        CHAT SECTION (RIGHT SIDE)
+        -------------------------------------------------
+        */
+
+        .chat-column {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #1a1a1a;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Online counter text */
+        .online-counter {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Chat messages box */
         #chatBox {
             flex: 1;
+            overflow-y: auto;
             background: #111;
-            color: #f1f1f1;
             border-radius: 10px;
             padding: 10px;
-            overflow-y: auto;
-            height: 300px;
             margin-bottom: 10px;
+            color: #f1f1f1;
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-height: 0;
+            height: 300px;
         }
 
+            /* Messages in chat */
+            #chatBox div {
+                padding: 5px 10px;
+                border-radius: 6px;
+                max-width: 80%;
+                word-break: break-word;
+            }
+
+        .chat-you {
+            background-color: #2e2e2e;
+            color: #f9f9f9;
+        }
+
+        .chat-partner {
+            background-color: #3a3a3a;
+            color: #f9f9f9;
+        }
+
+        #typingStatus {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 6px;
+        }
+
+        /*
+        -------------------------------------------------
+        INPUT / BUTTONS
+        -------------------------------------------------
+        */
+
+        /* Wrapper for input and send buttons */
         .input-wrapper {
             display: flex;
+            align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            background-color: #111;
+            border-top: 1px solid #333;
+            flex-shrink: 0;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
         }
 
-        input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            background: #222;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-        }
+            .input-wrapper input[type="text"] {
+                flex: 1;
+                padding: 10px;
+                background-color: #222;
+                color: #fff;
+                border: none;
+                border-radius: 6px;
+                font-size: 15px;
+            }
 
+            .input-wrapper button {
+                background-color: #facc15;
+                color: #000;
+                border: none;
+                padding: 10px 16px;
+                border-radius: 6px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+                .input-wrapper button:hover {
+                    background-color: #eab308;
+                }
+
+        /* General button styles */
         button {
-            background: #facc15;
+            background-color: #facc15;
+            color: #000;
             border: none;
             padding: 10px 16px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
+            transition: background-color 0.2s ease;
         }
+
+            button:hover {
+                background-color: #eab308;
+            }
+
+        /* Buttons under chatbox (e.g. Next, Mute) */
+        .chat-controls {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+            .chat-controls button {
+                background-color: #facc15;
+                color: #000;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-weight: bold;
+                font-size: 15px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+                .chat-controls button:hover {
+                    background-color: #eab308;
+                }
+
+        /*
+        -------------------------------------------------
+        GENDER SELECT
+        -------------------------------------------------
+        */
 
         .gender-buttons {
             display: flex;
@@ -382,14 +629,140 @@
             gap: 8px;
             background-color: #222;
             padding: 10px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: #eee;
         }
 
-            .gender-option input[type="radio"] {
-                accent-color: #facc15;
-                transform: scale(1.3);
+
+        .top-bar {
+            width: 100%;
+            background: #1a1a1a;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+            .top-bar .logo {
+                color: #facc15;
+                font-weight: 700;
+                font-size: 24px;
+                letter-spacing: 1px;
+                cursor: pointer;
+                user-select: none;
+                transition: color 0.3s ease;
             }
+
+                .top-bar .logo:hover {
+                    color: #eab308;
+                    text-decoration: underline;
+                }
+
+            .top-bar .gender-select-wrapper {
+                display: flex;
+                align-items: center;
+            }
+
+                .top-bar .gender-select-wrapper select {
+                    height: 40px;
+                    padding: 0 14px;
+                    background-color: #222;
+                    color: #facc15;
+                    border: 1px solid #444;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    cursor: pointer;
+                    background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-position: right 12px center;
+                    background-size: 16px;
+                    padding-right: 40px;
+                    transition: background-color 0.3s ease, border-color 0.3s ease;
+                }
+
+                    .top-bar .gender-select-wrapper select:hover {
+                        background-color: #333;
+                        border-color: #666;
+                    }
+
+        /*
+        -------------------------------------------------
+        LOADER
+        -------------------------------------------------
+        */
+
+        .loader-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px 50px;
+            border-radius: 10px;
+        }
+
+        .loader-spinner {
+            border: 6px solid #333;
+            border-top: 6px solid #facc15;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        .loader-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+        /*
+                -------------------------------------------------
+                DEVICE SELECT
+                -------------------------------------------------
+                */
+
+        .device-select-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            background: #111;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+            .device-select-wrapper label {
+                color: #facc15;
+                font-weight: 600;
+            }
+
+        .device-select {
+            background-color: #222;
+            color: #facc15;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 14px;
+            height: 40px;
+            flex: 1;
+        }
+
+            .device-select:focus {
+                outline: none;
+                border-color: #eab308;
+            }
+
+        
     </style>
-}
+    }

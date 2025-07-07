@@ -3,14 +3,14 @@
     <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/chat.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tuxNudq1mh010zhWV5uE2AAyEseaTedL1W7htszqquU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"10886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tuxNudq1mh010zhWV5uE2AAyEseaTedL1W7htszqquU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 07 Jul 2025 13:32:32 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-yV8mHZx4AmtgPMKvbK\u002BWoaBGIgV4tX\u002B3Z5HD7nZ3/HU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5616"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022yV8mHZx4AmtgPMKvbK\u002BWoaBGIgV4tX\u002B3Z5HD7nZ3/HU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 07 Jul 2025 17:16:32 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/chat.mw2sr1pz04.css">
+    <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/chat.dbnj77owxe.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mw2sr1pz04"},{"Name":"integrity","Value":"sha256-tuxNudq1mh010zhWV5uE2AAyEseaTedL1W7htszqquU="},{"Name":"label","Value":"_content/OmegleCloneMVC/css/chat.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"10886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tuxNudq1mh010zhWV5uE2AAyEseaTedL1W7htszqquU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 07 Jul 2025 13:32:32 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"dbnj77owxe"},{"Name":"integrity","Value":"sha256-yV8mHZx4AmtgPMKvbK\u002BWoaBGIgV4tX\u002B3Z5HD7nZ3/HU="},{"Name":"label","Value":"_content/OmegleCloneMVC/css/chat.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5616"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022yV8mHZx4AmtgPMKvbK\u002BWoaBGIgV4tX\u002B3Z5HD7nZ3/HU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 07 Jul 2025 17:16:32 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/site.5ipweew5fc.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
