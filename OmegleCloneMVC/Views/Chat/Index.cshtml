@@ -19,16 +19,15 @@
 
 
         <!-- Pol -->
-        <div id="genderSelect" class="gender-buttons">
-            <label class="gender-option">
-                <input type="radio" name="gender" value="Muško" />
-                <span>Muško</span>
-            </label>
-            <label class="gender-option">
-                <input type="radio" name="gender" value="Žensko" />
-                <span>Žensko</span>
-            </label>
+        <div class="gender-select-wrapper">
+            <select id="genderSelect">
+                <option value="" disabled selected>Izaberi pol</option>
+                <option value="Muško">Muško</option>
+                <option value="Žensko">Žensko</option>
+            </select>
         </div>
+
+
         <div id="onlineUsers" class="online-counter">👥 0 online</div>
 
 
@@ -158,8 +157,9 @@
 
             document.getElementById("loader").style.display = "flex";
 
-            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const gender = document.getElementById("genderSelect").value;
             if (!gender) return alert("Molimo izaberite pol pre početka.");
+
 
             if (!connection || connection.state !== "Connected") {
                 await setupSignalR(gender);
@@ -272,6 +272,33 @@
 
 
     </script>
+
+    <script>
+
+                let touchStartX = null;
+
+        document.addEventListener("touchstart", function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener("touchend", function (e) {
+            if (touchStartX === null) return;
+
+            let touchEndX = e.changedTouches[0].screenX;
+            let diffX = touchStartX - touchEndX;
+
+            if (diffX > 50) {
+                // swipe left
+                next();
+            }
+
+            touchStartX = null;
+        }, false);
+
+
+    </script>
+
+
 }
 
 @section Styles {

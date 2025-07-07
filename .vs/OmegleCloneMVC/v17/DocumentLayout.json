@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\wwwroot\\css\\chat.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\wwwroot\\css\\chat.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|c:\\users\\lazar\\source\\repos\\omegleclonemvc\\omegleclonemvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3EEE7AD-3570-453C-9074-76CD9CD21F51}|OmegleCloneMVC\\OmegleCloneMVC.csproj|solutionrelative:omegleclonemvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,94 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\appsettings.json",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\appsettings.json",
-              "RelativeToolTip": "OmegleCloneMVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-07T01:01:13.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "RelativeToolTip": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T16:52:47.64Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Program.cs",
+              "RelativeDocumentMoniker": "OmegleCloneMVC\\Program.cs",
+              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Program.cs",
+              "RelativeToolTip": "OmegleCloneMVC\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAcwF4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T13:39:10.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "OmegleCloneMVC\\Hubs\\ChatHub.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAcwGsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T16:47:01.053Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "OmegleCloneMVC\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T16:46:44.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAcwCQAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T15:15:47.343Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "chat.css",
               "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\wwwroot\\css\\chat.css",
               "RelativeDocumentMoniker": "OmegleCloneMVC\\wwwroot\\css\\chat.css",
               "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\wwwroot\\css\\chat.css",
               "RelativeToolTip": "OmegleCloneMVC\\wwwroot\\css\\chat.css",
-              "ViewState": "AgIAAHUBAAAAAAAAAAAiwJMBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHwBAAAAAAAAAAAAwJgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-06-15T16:19:19.321Z",
+              "WhenOpened": "2025-07-07T13:25:11.63Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "OmegleCloneMVC\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
+              "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
+              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
+              "RelativeToolTip": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAUwKAAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T15:49:48.321Z"
+              "WhenOpened": "2025-07-07T13:24:36.507Z",
+              "EditorCaption": ""
             }
           ]
         }
