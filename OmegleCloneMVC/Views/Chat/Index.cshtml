@@ -53,7 +53,10 @@
 
             <button onclick="sendMessage()">Send</button>
             <button onclick="next()">Next</button>
-            <small style="color:#777; font-size: 12px;">(ESC za sledećeg partnera)</small>
+            <small class="esc-text" style="color:#777; font-size: 12px;">
+                (ESC za sledećeg partnera)
+            </small>
+
 
             <button onclick="toggleMic()">Mute</button>
         </div>
@@ -414,11 +417,15 @@
 
 @section Styles {
     <style>
-        /*
-        -------------------------------------------------
-        GLOBAL RESET / LAYOUT
-        -------------------------------------------------
-        */
+        /* -------------------------------------------
+           GLOBAL RESET / LAYOUT
+        -------------------------------------------- */
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #000;
+        }
 
         .container {
             max-width: 100vw;
@@ -430,38 +437,35 @@
             box-sizing: border-box;
         }
 
-        /*
-        -------------------------------------------------
-        VIDEO SECTION (LEFT SIDE)
-        -------------------------------------------------
-        */
+        /* -------------------------------------------
+           VIDEO SECTION (LEFT SIDE)
+        -------------------------------------------- */
 
         .video-column {
             width: 50%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
+            justify-content: flex-start;
+            gap: 8px; /* dodaj lep razmak između videa */
+            padding: 10px;
             background-color: #000;
             overflow-y: auto;
         }
 
             .video-column video {
+                height: 48zvh;
                 width: 100%;
-                height: 45vh;
-                margin-bottom: 10px;
-                border-radius: 10px;
-                background-color: #222;
-                border: 2px solid #333;
+                border-radius: 12px;
+                background-color: #1a1a1a;
                 object-fit: cover;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
             }
 
-        /*
-        -------------------------------------------------
-        CHAT SECTION (RIGHT SIDE)
-        -------------------------------------------------
-        */
+
+        /* -------------------------------------------
+           CHAT SECTION (RIGHT SIDE)
+        -------------------------------------------- */
 
         .chat-column {
             width: 50%;
@@ -470,73 +474,69 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 20px;
-            background-color: #1a1a1a;
+            background-color: #121212;
             overflow: hidden;
             box-sizing: border-box;
         }
 
-        /* Online counter text */
         .online-counter {
-            color: #ccc;
+            color: #aaa;
             font-size: 14px;
             margin-bottom: 10px;
         }
 
-        /* Chat messages box */
         #chatBox {
             flex: 1;
             overflow-y: auto;
-            background: #111;
+            background: rgba(30, 30, 30, 0.6);
             border-radius: 10px;
-            padding: 10px;
+            padding: 14px;
             margin-bottom: 10px;
             color: #f1f1f1;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.5;
             display: flex;
             flex-direction: column;
-            gap: 5px;
-            min-height: 0;
+            gap: 8px;
+            backdrop-filter: blur(6px);
             height: 300px;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3);
         }
 
-            /* Messages in chat */
             #chatBox div {
-                padding: 5px 10px;
-                border-radius: 6px;
+                padding: 8px 12px;
+                border-radius: 8px;
                 max-width: 80%;
                 word-break: break-word;
+                font-weight: 500;
             }
 
         .chat-you {
-            background-color: #2e2e2e;
+            background: linear-gradient(145deg, #292929, #1d1d1d);
             color: #f9f9f9;
         }
 
         .chat-partner {
-            background-color: #3a3a3a;
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
             color: #f9f9f9;
         }
 
         #typingStatus {
             font-style: italic;
-            color: #ccc;
+            color: #999;
             margin-bottom: 6px;
         }
 
-        /*
-        -------------------------------------------------
-        INPUT / BUTTONS
-        -------------------------------------------------
-        */
+        /* -------------------------------------------
+           INPUT / BUTTONS
+        -------------------------------------------- */
 
-        /* Wrapper for input and send buttons */
         .input-wrapper {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 12px;
-            background-color: #111;
+            background: #1a1a1a;
             border-top: 1px solid #333;
             flex-shrink: 0;
             position: sticky;
@@ -546,76 +546,67 @@
 
             .input-wrapper input[type="text"] {
                 flex: 1;
-                padding: 10px;
+                padding: 10px 14px;
                 background-color: #222;
-                color: #fff;
-                border: none;
-                border-radius: 6px;
+                color: #f1f1f1;
+                border: 1px solid #333;
+                border-radius: 8px;
                 font-size: 15px;
+                transition: border-color 0.3s;
             }
 
+                .input-wrapper input[type="text"]:focus {
+                    outline: none;
+                    border-color: #facc15;
+                }
+
             .input-wrapper button {
-                background-color: #facc15;
+                background: linear-gradient(145deg, #facc15, #eab308);
                 color: #000;
                 border: none;
                 padding: 10px 16px;
-                border-radius: 6px;
-                font-weight: bold;
+                border-radius: 8px;
+                font-weight: 600;
                 cursor: pointer;
-                transition: background-color 0.2s ease;
+                transition: transform 0.2s, background 0.3s;
             }
 
                 .input-wrapper button:hover {
-                    background-color: #eab308;
+                    transform: scale(1.05);
                 }
 
-        /* General button styles */
         button {
-            background-color: #facc15;
+            background: linear-gradient(145deg, #facc15, #eab308);
             color: #000;
             border: none;
             padding: 10px 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: transform 0.2s, background 0.3s;
         }
 
             button:hover {
-                background-color: #eab308;
+                transform: scale(1.05);
             }
 
-        /* Buttons under chatbox (e.g. Next, Mute) */
         .chat-controls {
             margin-top: auto;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
             padding-top: 15px;
             border-top: 1px solid #333;
         }
 
             .chat-controls button {
-                background-color: #facc15;
-                color: #000;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 6px;
-                font-weight: bold;
                 font-size: 15px;
-                cursor: pointer;
-                transition: background-color 0.2s ease;
+                padding: 10px 20px;
             }
 
-                .chat-controls button:hover {
-                    background-color: #eab308;
-                }
-
-        /*
-        -------------------------------------------------
-        GENDER SELECT
-        -------------------------------------------------
-        */
+        /* -------------------------------------------
+           GENDER SELECT
+        -------------------------------------------- */
 
         .gender-buttons {
             display: flex;
@@ -627,10 +618,21 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background-color: #222;
+            background-color: #1f1f1f;
             padding: 10px 14px;
+            border-radius: 8px;
+            color: #facc15;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
+            .gender-option:hover {
+                background-color: #333;
+            }
+
+        /* -------------------------------------------
+           TOP BAR
+        -------------------------------------------- */
 
         .top-bar {
             width: 100%;
@@ -641,7 +643,7 @@
             align-items: center;
             border-bottom: 1px solid #333;
             margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
             .top-bar .logo {
@@ -670,18 +672,15 @@
                     background-color: #222;
                     color: #facc15;
                     border: 1px solid #444;
-                    border-radius: 6px;
+                    border-radius: 8px;
                     font-size: 16px;
                     appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    cursor: pointer;
                     background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
                     background-repeat: no-repeat;
                     background-position: right 12px center;
                     background-size: 16px;
                     padding-right: 40px;
-                    transition: background-color 0.3s ease, border-color 0.3s ease;
+                    transition: background-color 0.3s, border-color 0.3s;
                 }
 
                     .top-bar .gender-select-wrapper select:hover {
@@ -689,11 +688,9 @@
                         border-color: #666;
                     }
 
-        /*
-        -------------------------------------------------
-        LOADER
-        -------------------------------------------------
-        */
+        /* -------------------------------------------
+           LOADER
+        -------------------------------------------- */
 
         .loader-container {
             position: absolute;
@@ -705,9 +702,10 @@
             flex-direction: column;
             align-items: center;
             color: #fff;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 30px 50px;
-            border-radius: 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
 
         .loader-spinner {
@@ -725,37 +723,28 @@
             font-weight: 600;
         }
 
-
-        /*
-                -------------------------------------------------
-                DEVICE SELECT
-                -------------------------------------------------
-                */
+        /* -------------------------------------------
+           DEVICE SELECT
+        -------------------------------------------- */
 
         .device-select-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-            background: #111;
-            padding: 10px;
-            border-radius: 8px;
+            display: none;
         }
 
-            .device-select-wrapper label {
-                color: #facc15;
-                font-weight: 600;
-            }
+        .esc-text {
+            display: none;
+        }
 
         .device-select {
             background-color: #222;
             color: #facc15;
             border: 1px solid #444;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 8px 12px;
             font-size: 14px;
             height: 40px;
             flex: 1;
+            transition: border-color 0.3s;
         }
 
             .device-select:focus {
@@ -763,6 +752,81 @@
                 border-color: #eab308;
             }
 
-        
+        @@media (max-width: 768px) {
+
+            .container {
+                flex-direction: column;
+                height: 100vh;
+            }
+
+            .video-column {
+                width: 100%;
+                height: auto;
+            }
+
+                .video-column video {
+                    width: 100%;
+                    height: auto;
+                    max-height: 35vh;
+                }
+
+            .chat-column {
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            #chatBox {
+                flex: 1;
+                height: auto;
+                max-height: none;
+                overflow-y: auto;
+            }
+
+            .input-wrapper {
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px;
+                flex-shrink: 0;
+            }
+
+                .input-wrapper input[type="text"] {
+                    width: 100%;
+                }
+
+                .input-wrapper button {
+                    width: 100%;
+                }
+
+            .chat-controls {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: space-between;
+            }
+
+                .chat-controls button {
+                    flex: 1 1 calc(33% - 8px);
+                    padding: 10px;
+                    font-size: 14px;
+                }
+
+            .device-select-wrapper,
+            .esc-text {
+                display: none;
+            }
+        }
+
+
+        @@media (max-width: 480px) {
+            .video-column video
+
+        {
+            max-height: 35vh;
+        }
+
+        }
     </style>
     }

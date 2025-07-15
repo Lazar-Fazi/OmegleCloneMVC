@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "OmegleCloneMVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-07T14:41:41.466Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "OmegleCloneMVC\\Program.cs",
               "ViewState": "AgIAAE4AAAAAAAAAAAAcwF4AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T13:39:10.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-07T13:39:10.18Z"
             },
             {
               "$type": "Document",
@@ -62,7 +61,7 @@
               "RelativeDocumentMoniker": "OmegleCloneMVC\\wwwroot\\css\\chat.css",
               "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\wwwroot\\css\\chat.css",
               "RelativeToolTip": "OmegleCloneMVC\\wwwroot\\css\\chat.css",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAAMYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-07-07T13:25:11.63Z",
               "EditorCaption": ""
@@ -73,9 +72,9 @@
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
               "RelativeDocumentMoniker": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "RelativeToolTip": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAmwOIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lazar\\source\\repos\\OmegleCloneMVC\\OmegleCloneMVC\\Views\\Chat\\Index.cshtml*",
+              "RelativeToolTip": "OmegleCloneMVC\\Views\\Chat\\Index.cshtml*",
+              "ViewState": "AgIAAPsCAAAAAAAAAAAAADQDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-07T13:24:36.507Z",
               "EditorCaption": ""
