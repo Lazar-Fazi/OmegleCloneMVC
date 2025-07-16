@@ -4,13 +4,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Jul 2025 13:32:22 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Jul 2025 14:26:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/chat.ep22qm2jet.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ep22qm2jet"},{"Name":"integrity","Value":"sha256-MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo="},{"Name":"label","Value":"_content/OmegleCloneMVC/css/chat.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Jul 2025 13:32:22 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3886"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022MsykTdRQ1TdyzA4ioPdsTCTx\u002BToyFOqlM4wy1BobJTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Jul 2025 14:26:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OmegleCloneMVC/css/site.5ipweew5fc.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
